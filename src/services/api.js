@@ -1,4 +1,5 @@
-const BASE_URL = 'http://localhost:5000/api';
+// const BASE_URL = 'http://localhost:5000/api';
+const BASE_URL = 'https://taskmanager-api-6gbm.onrender.com/api';
 
 /**
  * Helper to dynamically generate authorization headers from localStorage.
