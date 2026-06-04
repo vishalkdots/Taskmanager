@@ -35,7 +35,7 @@ export const SocketProvider = ({ children }) => {
 
   useEffect(() => {
     // Create new socket connection
-    const newSocket = io('http://localhost:5000', {
+    const newSocket = io('https://taskmanager-api-6gbm.onrender.com', {
       transports: ['websocket', 'polling']
     })
 

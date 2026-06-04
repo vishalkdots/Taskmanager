@@ -554,7 +554,7 @@ function KanbanBoard() {
                 {selectedTask.attachments && selectedTask.attachments.map((file, idx) => (
                   <div key={idx} className="attachment-item">
                     <a
-                      href={`http://localhost:5000${file.path}`}
+                      href={`https://taskmanager-api-6gbm.onrender.com${file.path}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="attachment-info"

@@ -17,7 +17,8 @@ function ApiExplorer() {
   const { sendClientLog } = useContext(SocketContext)
 
   const [method, setMethod] = useState('GET')
-  const [url, setUrl] = useState('http://localhost:5000/api/tasks')
+  const [url, setUrl] = useState('https://taskmanager-api-6gbm.onrender.com/api/tasks')
+  // const [url, setUrl] = useState('http://localhost:5000/api/tasks')
   const [headers, setHeaders] = useState(
     JSON.stringify({ 'Content-Type': 'application/json' }, null, 2)
   )
@@ -36,12 +37,13 @@ function ApiExplorer() {
   // Tabs for Editor (Headers, Body)
   const [activeTab, setActiveTab] = useState('body')
 
+
   // History state
   const [history, setHistory] = useState([
     {
       id: 1,
       method: 'GET',
-      url: 'http://localhost:5000/',
+      url: 'https://taskmanager-api-6gbm.onrender.com/',
       timestamp: new Date().toLocaleTimeString()
     }
   ])
@@ -52,7 +54,7 @@ function ApiExplorer() {
       name: 'Server Health Check',
       desc: 'Verify if node backend is running',
       method: 'GET',
-      url: 'http://localhost:5000/',
+      url: 'https://taskmanager-api-6gbm.onrender.com/',
       headers: { 'Content-Type': 'application/json' },
       body: ''
     },
@@ -60,7 +62,7 @@ function ApiExplorer() {
       name: 'Get Tasks List',
       desc: 'Fetch current logged in user\'s tasks',
       method: 'GET',
-      url: 'http://localhost:5000/api/tasks',
+      url: 'https://taskmanager-api-6gbm.onrender.com/api/tasks',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token || '<YOUR_JWT_TOKEN>'}`
@@ -71,7 +73,7 @@ function ApiExplorer() {
       name: 'Create Workspace Task',
       desc: 'Deploy a new task to DB via POST',
       method: 'POST',
-      url: 'http://localhost:5000/api/tasks',
+      url: 'https://taskmanager-api-6gbm.onrender.com/api/tasks',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token || '<YOUR_JWT_TOKEN>'}`
@@ -87,7 +89,7 @@ function ApiExplorer() {
       name: 'Register Account',
       desc: 'Create new user profile via AUTH router',
       method: 'POST',
-      url: 'http://localhost:5000/api/auth/register',
+      url: 'https://taskmanager-api-6gbm.onrender.com/api/auth/register',
       headers: { 'Content-Type': 'application/json' },
       body: {
         name: 'API Tester',
@@ -216,7 +218,7 @@ function ApiExplorer() {
               className="api-url-input"
               value={url}
               onChange={(e) => setUrl(e.target.value)}
-              placeholder="Enter endpoint URL (e.g. http://localhost:5000/api/tasks)"
+              placeholder="Enter endpoint URL (e.g. https://taskmanager-api-6gbm.onrender.com/api/tasks)"
               required
             />
 
@@ -370,7 +372,7 @@ function ApiExplorer() {
                       {hist.method}
                     </strong>
                     <span style={{ textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden', maxWidth: '140px' }} title={hist.url}>
-                      {hist.url.replace('http://localhost:5000', '')}
+                      {hist.url.replace('https://taskmanager-api-6gbm.onrender.com', '')}
                     </span>
                   </span>
                   <span style={{ color: 'var(--text-muted)' }}>{hist.timestamp}</span>
