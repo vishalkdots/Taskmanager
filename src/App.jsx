@@ -11,6 +11,7 @@ import AccountantLedger from './components/AccountantLedger'
 import TeamBuilder from './components/TeamBuilder'
 import ProjectManager from './components/ProjectManager'
 import VideoCall from './components/VideoCall'
+import RemoteDesktop from './components/RemoteDesktop'
 import {
   LayoutDashboard,
   KanbanSquare,
@@ -31,7 +32,8 @@ import {
   Bell,
   X,
   FolderKanban,
-  Video
+  Video,
+  Monitor
 } from 'lucide-react'
 
 function App() {
@@ -372,6 +374,15 @@ function App() {
               Video Meeting
             </button>
 
+            {/* Remote Desktop (All roles) */}
+            <button
+              className={`menu-item ${activeTab === 'remote' ? 'active' : ''}`}
+              onClick={() => setActiveTab('remote')}
+            >
+              <Monitor size={18} />
+              Remote Desktop
+            </button>
+
             {/* Project Task board (Employees, Team Leaders, and Admins) */}
             {(user?.role === 'employee' || user?.role === 'teamleader' || user?.role === 'admin') && (
               <button
@@ -434,6 +445,7 @@ function App() {
               {activeTab === 'kanban' && 'Real-Time Kanban Board'}
               {activeTab === 'chat' && 'Workspace Chatroom'}
               {activeTab === 'video' && 'Video Meeting'}
+              {activeTab === 'remote' && 'Remote Desktop'}
               {activeTab === 'api' && 'API Request Laboratory'}
             </h1>
             <p style={{ color: 'var(--text-muted)', fontSize: '14px', marginTop: '4px' }}>
@@ -446,6 +458,7 @@ function App() {
               {activeTab === 'kanban' && 'Drag-and-drop collaborative tasks sync across active employee sessions.'}
               {activeTab === 'chat' && 'Converse with active team members in real-time.'}
               {activeTab === 'video' && 'Secure video conferencing with screen sharing for your team.'}
+              {activeTab === 'remote' && 'View and control your colleague\'s screen in real-time.'}
               {activeTab === 'api' && 'Mock and test HTTP requests with direct latency auditing.'}
             </p>
           </div>
@@ -477,6 +490,7 @@ function App() {
         {activeTab === 'kanban' && <KanbanBoard />}
         {activeTab === 'chat' && <ChatRoom />}
         {activeTab === 'video' && <VideoCall />}
+        {activeTab === 'remote' && <RemoteDesktop />}
         {activeTab === 'api' && <ApiExplorer />}
       </main>
     </div>
