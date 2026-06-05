@@ -10,6 +10,7 @@ import HrSalaryManager from './components/HrSalaryManager'
 import AccountantLedger from './components/AccountantLedger'
 import TeamBuilder from './components/TeamBuilder'
 import ProjectManager from './components/ProjectManager'
+import VideoCall from './components/VideoCall'
 import {
   LayoutDashboard,
   KanbanSquare,
@@ -29,7 +30,8 @@ import {
   Megaphone,
   Bell,
   X,
-  FolderKanban
+  FolderKanban,
+  Video
 } from 'lucide-react'
 
 function App() {
@@ -361,6 +363,15 @@ function App() {
               Project Portfolio
             </button>
 
+            {/* Video Meeting (All roles) */}
+            <button
+              className={`menu-item ${activeTab === 'video' ? 'active' : ''}`}
+              onClick={() => setActiveTab('video')}
+            >
+              <Video size={18} />
+              Video Meeting
+            </button>
+
             {/* Project Task board (Employees, Team Leaders, and Admins) */}
             {(user?.role === 'employee' || user?.role === 'teamleader' || user?.role === 'admin') && (
               <button
@@ -422,6 +433,7 @@ function App() {
               {activeTab === 'teambuilder' && 'Workspace Team Builder'}
               {activeTab === 'kanban' && 'Real-Time Kanban Board'}
               {activeTab === 'chat' && 'Workspace Chatroom'}
+              {activeTab === 'video' && 'Video Meeting'}
               {activeTab === 'api' && 'API Request Laboratory'}
             </h1>
             <p style={{ color: 'var(--text-muted)', fontSize: '14px', marginTop: '4px' }}>
@@ -433,6 +445,7 @@ function App() {
               {activeTab === 'teambuilder' && 'Assemble collaborative workspace groups and broadcast live push alert messages.'}
               {activeTab === 'kanban' && 'Drag-and-drop collaborative tasks sync across active employee sessions.'}
               {activeTab === 'chat' && 'Converse with active team members in real-time.'}
+              {activeTab === 'video' && 'Secure video conferencing with screen sharing for your team.'}
               {activeTab === 'api' && 'Mock and test HTTP requests with direct latency auditing.'}
             </p>
           </div>
@@ -463,6 +476,7 @@ function App() {
         {activeTab === 'teambuilder' && <TeamBuilder />}
         {activeTab === 'kanban' && <KanbanBoard />}
         {activeTab === 'chat' && <ChatRoom />}
+        {activeTab === 'video' && <VideoCall />}
         {activeTab === 'api' && <ApiExplorer />}
       </main>
     </div>

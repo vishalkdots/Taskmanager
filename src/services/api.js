@@ -1,5 +1,5 @@
-//const BASE_URL = 'http://localhost:5000/api';
-const BASE_URL = 'https://taskmanager-api-6gbm.onrender.com/api';
+const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const API_PREFIX = `${BASE_URL}/api`;
 
 /**
  * Helper to dynamically generate authorization headers from localStorage.
@@ -48,7 +48,7 @@ const handleResponse = async (response) => {
  */
 export const api = {
   get: async (endpoint) => {
-    const response = await fetch(`${BASE_URL}${endpoint}`, {
+    const response = await fetch(`${API_PREFIX}${endpoint}`, {
       method: 'GET',
       headers: getHeaders()
     });
@@ -56,7 +56,7 @@ export const api = {
   },
 
   post: async (endpoint, body) => {
-    const response = await fetch(`${BASE_URL}${endpoint}`, {
+    const response = await fetch(`${API_PREFIX}${endpoint}`, {
       method: 'POST',
       headers: getHeaders(),
       body: JSON.stringify(body)
@@ -65,7 +65,7 @@ export const api = {
   },
 
   put: async (endpoint, body) => {
-    const response = await fetch(`${BASE_URL}${endpoint}`, {
+    const response = await fetch(`${API_PREFIX}${endpoint}`, {
       method: 'PUT',
       headers: getHeaders(),
       body: JSON.stringify(body)
@@ -74,7 +74,7 @@ export const api = {
   },
 
   delete: async (endpoint) => {
-    const response = await fetch(`${BASE_URL}${endpoint}`, {
+    const response = await fetch(`${API_PREFIX}${endpoint}`, {
       method: 'DELETE',
       headers: getHeaders()
     });
@@ -99,7 +99,7 @@ export const api = {
       }
     }
 
-    const response = await fetch(`${BASE_URL}${endpoint}`, {
+    const response = await fetch(`${API_PREFIX}${endpoint}`, {
       method: 'POST',
       headers,
       body: formData
